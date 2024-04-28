@@ -1,0 +1,293 @@
+aws dynamodb create-table --cli-input-json file://create_programme_table.json
+aws dynamodb --profile aws4devuser create-table --cli-input-json file://create_application_table.json
+aws dynamodb create-table --cli-input-json file://create_cand_application_table.json
+
+
+INSERT INTO "programme" VALUE 
+{
+ 'prog_code': 'UWL_CS_CYB_SEC',
+ 'prog_provider': 'University of West London',
+ 'faculty': 'Computer Science',
+ 'area': 'Cyber Security',
+ 'duration': '3',
+ 'entry_req_eng': 'HKDSE Level 3 or above in English Language.',
+ 'entry_req_general': 'Total score of 15 in five HKDSE subjects, normally with English at Level 3 and Mathematics at Level 3, with none of the five subjects at Level 1.',
+ 'entry_req_other': 'Applicants aged 21 or above prior to the commencement of the programme, subject to the prior learning and experience requirements by UWL.',
+ 'mode_of_study': 'Full time / Part time / Flexible mode',
+ 'prog_desc': 'We are now living in online world – shop online, work online and socialize online. Meanwhile, our online activities generate a large amount of data that might be held by government bodies or commercial companies. If the information systems employed by these bodies are not secure, our data may fall into the wrong hands where it might be exploited to cause not only financial harm but also threaten our safety. This is why cyber security becomes a very important issue nowadays which everyone should be aware of.',
+ 'prog_name': 'BSc (Hons) Cyber Security',
+ 'img1': 'http://2023-project-public.s3-website-ap-southeast-1.amazonaws.com/img/course_subcover_csec.jpg',
+ 'img2': 'http://2023-project-public.s3-website-ap-southeast-1.amazonaws.com/img/uwl_logo_2024_s.png',
+ 'y1_tuition_fee': 59900,
+ 'y2_tuition_fee': 77200,
+ 'y3_tuition_fee': 77200,
+ 'featured':'Y'
+};
+
+
+INSERT INTO "programme" VALUE 
+{
+ 'prog_code': 'UWL_BS_BBA',
+ 'prog_provider': 'University of West London',
+ 'faculty': 'Business',
+ 'area': 'Business Administration',
+ 'duration': '3',
+ 'entry_req_eng': 'HKDSE Level 3 or above in English Language.',
+ 'entry_req_general': 'Total score of 15 in five HKDSE subjects, normally with English at Level 3 and Mathematics at Level 3, with none of the five subjects at Level 1.',
+ 'entry_req_other': 'Applicants aged 21 or above prior to the commencement of the programme, subject to the prior learning and experience requirements by UWL.',
+ 'mode_of_study': 'Full time / Part time / Flexible mode',
+ 'prog_desc': 'We are now living in online world – shop online, work online and socialize online. Meanwhile, our online activities generate a large amount of data that might be held by government bodies or commercial companies. If the information systems employed by these bodies are not secure, our data may fall into the wrong hands where it might be exploited to cause not only financial harm but also threaten our safety. This is why cyber security becomes a very important issue nowadays which everyone should be aware of.\n\nBA (Hons) Business Studies (BABS) offers wide and in-depth knowledge, understanding and skills of effectively running for profit and not for profit organisation in fast changing global business world. BA (Hons) Business Studies is designed to enable the student to develop a critical understanding of ethical principles and practice, and an awareness of effective management principles set in the many contexts in which businesses operate and also captures the essence of entrepreneurship.',
+ 'prog_name': 'BA (Hons) Business Studies',
+ 'img1': 'http://2023-project-public.s3-website-ap-southeast-1.amazonaws.com/img/course_subcover_bs.jpg',
+ 'img2': 'http://2023-project-public.s3-website-ap-southeast-1.amazonaws.com/img/uwl_logo_2024_s.png',
+ 'y1_tuition_fee': 59900,
+ 'y2_tuition_fee': 77200,
+ 'y3_tuition_fee': 77200,
+ 'featured':'Y'
+};
+
+
+
+INSERT INTO "programme" VALUE 
+{
+ 'prog_code': 'UWL_SS_CRI_FOR',
+ 'prog_provider': 'University of West London',
+ 'faculty': 'Social Science',
+ 'area': 'Criminology',
+ 'duration': '3',
+ 'entry_req_eng': 'HKDSE Level 3 or above in English Language.',
+ 'entry_req_general': 'Total score of 15 in five HKDSE subjects, normally with English at Level 3 and Mathematics at Level 3, with none of the five subjects at Level 1.',
+ 'entry_req_other': 'Applicants aged 21 or above prior to the commencement of the programme, subject to the prior learning and experience requirements by UWL.',
+ 'mode_of_study': 'Full time / Part time / Flexible mode',
+ 'prog_desc': 'This course focuses upon key elements involved in the Criminal Justice System – Criminology, Policing and Forensic Investigation. The interdisciplinary field of criminology explores topics such as the study of offenders, victims and the motivations for crime. The policing modules study the powers of the police, how crimes are investigated, the role of police in society and contemporary issues that are associated with the role and actions of law enforcement agencies. The scientific investigation of crime explores the role of science in the investigative process, its accomplishments, complexities and issues affecting justice. \n\nThis degree embeds academic, professional and transferrable skills that will equip students for their future careers with dedicated support and opportunities to gain valuable work experience in the wider criminal justice field.',
+ 'prog_name': 'BA (Hons) Criminology, Policing and Forensic Investigation',
+ 'img1': 'http://2023-project-public.s3-website-ap-southeast-1.amazonaws.com/img/course_subcover_foren.jpg',
+ 'img2': 'http://2023-project-public.s3-website-ap-southeast-1.amazonaws.com/img/uwl_logo_2024_s.png',
+ 'y1_tuition_fee': 59900,
+ 'y2_tuition_fee': 77200,
+ 'y3_tuition_fee': 77200,
+ 'featured':'Y'
+};
+
+
+
+
+INSERT INTO "programme" VALUE 
+{
+ 'prog_code': 'UWL_CS_CYB_SEC',
+ 'prog_provider': 'University of West London',
+ 'faculty': 'Computer Science',
+ 'area': 'Cyber Security',
+ 'duration': '3',
+ 'entry_req_eng': 'HKDSE Level 3 or above in English Language.',
+ 'entry_req_general': 'Total score of 15 in five HKDSE subjects, normally with English at Level 3 and Mathematics at Level 3, with none of the five subjects at Level 1.',
+ 'entry_req_other': 'Applicants aged 21 or above prior to the commencement of the programme, subject to the prior learning and experience requirements by UWL.',
+ 'mode_of_study': 'Full time / Part time / Flexible mode',
+ 'prog_desc': 'We are now living in online world – shop online, work online and socialize online. Meanwhile, our online activities generate a large amount of data that might be held by government bodies or commercial companies. If the information systems employed by these bodies are not secure, our data may fall into the wrong hands where it might be exploited to cause not only financial harm but also threaten our safety. This is why cyber security becomes a very important issue nowadays which everyone should be aware of.',
+ 'prog_name': 'BSc (Hons) Cyber Security',
+ 'img1': 'http://2023-project-public.s3-website-ap-southeast-1.amazonaws.com/img/course_subcover_csec.jpg',
+ 'img2': 'http://2023-project-public.s3-website-ap-southeast-1.amazonaws.com/img/uwl_logo_2024_s.png',
+ 'y1_tuition_fee': 59900,
+ 'y2_tuition_fee': 77200,
+ 'y3_tuition_fee': 77200,
+ 'featured':'Y'
+};
+
+
+
+INSERT INTO "application" VALUE 
+{
+  'app_id' : '20240101_UWL_CS_CYB_SEC',
+  'create_date' : '2024-02-01T17:42:34Z',
+  'surname' : 'LAM',
+  'given_name' : 'BORIS',
+  'id_doc_no' : 'L123',
+  'gender' : 'Male',
+  'dob' : ' 2000-01-02',
+  'email' : 'aws4.borisWgmail.com',
+  'mobile_contact' : '91234567',
+  'contract_address' : 'FLAT 123, BLK D, HAHA GARDEN, HK',
+  'SEN' : true,
+  'sen_detail' : 'ASD, ADHD',
+  'prog_code': 'UWL_CS_CYB_SEC',
+  'prog_name' : 'BSc (Hons) Cyber Security',
+  'prog_provider' : 'University of West London',
+  'mode_of_study' : 'full-time',
+  'entry_year' : '2024',
+  'intake_terms' : 'JAN',
+  'photo_path' : 's3://2023-project-uwl/APP/aws4.boris@gmail.com/photo/photo.jpg',
+  'id_doc_path' : 's3://2023-project-uwl/APP/aws4.boris@gmail.com/id_doc/hkid.jpg',
+  'education_qualification1' : 's3://2023-project-uwl/APP/aws4.boris@gmail.com/edu_cert/hkdse.jpg',
+  'education_qualification2' : '',
+  'education_qualification3' : '',
+  'professional_qualification1' : 's3://2023-project-uwl/APP/aws4.boris@gmail.com/prof_cert/cert1.jpg',
+  'professional_qualification2' : '',
+  'professional_qualification3' : '',
+  'status' : 'REJECTED'
+}
+
+
+INSERT INTO "application" VALUE 
+{
+  'app_id' : '20240101_UWL_BS_BBA',
+  'create_date' : '2024-02-05T17:42:34Z',
+  'surname' : 'LAM',
+  'given_name' : 'LE BORIS',
+  'id_doc_no' : 'L123',
+  'gender' : 'Male',
+  'dob' : ' 2000-01-02',
+  'email' : 'aws4.borisWgmail.com',
+  'mobile_contact' : '91234567',
+  'contract_address' : 'FLAT 123, BLK D, HAHA GARDEN, HK',
+  'SEN' : true,
+  'sen_detail' : 'ASD, ADHD',
+  'prog_code': 'UWL_BS_BBA',
+  'prog_name' : 'BA (Hons) Business Studies',
+  'prog_provider' : 'University of West London',
+  'mode_of_study' : 'part-time',
+  'entry_year' : '2024',
+  'intake_terms' : 'JAN',
+  'photo_path' : 's3://2023-project-uwl/APP/aws4.boris@gmail.com/photo/photo.jpg',
+  'id_doc_path' : 's3://2023-project-uwl/APP/aws4.boris@gmail.com/id_doc/hkid.jpg',
+  'education_qualification1' : 's3://2023-project-uwl/APP/aws4.boris@gmail.com/edu_cert/hkdse.jpg',
+  'education_qualification2' : '',
+  'education_qualification3' : '',
+  'professional_qualification1' : 's3://2023-project-uwl/APP/aws4.boris@gmail.com/prof_cert/cert1.jpg',
+  'professional_qualification2' : '',
+  'professional_qualification3' : '',
+  'status' : 'PENDING'
+}
+//////////////////////////////////////////////////////
+//////////////////////////////////////////////////////
+//////////////////////////////////////////////////////
+
+
+INSERT INTO "cand_application" VALUE 
+{        
+  'pk' : '2fb624f4-0b88-4c2b-91a7-521d9a7f7894',
+  'sk' : 'CAND',
+  'surname' : 'LAM',
+  'given_name' : 'LE BORIS',
+  'email' : 'aws4.borisWgmail.com',
+  'mobile_contact' : '91234567',
+  'wallet_address' : ''
+}
+
+
+
+
+INSERT INTO "cand_application" VALUE 
+{
+  'pk' : '2fb624f4-0b88-4c2b-91a7-521d9a7f7894',
+  'sk' : 'UWL-BS-BBA-20240101174234',
+  'surname' : 'LAM',
+  'given_name' : 'LE BORIS',
+  'id_doc_no' : 'L123',
+  'gender' : 'Male',
+  'dob' : '2007-03-06T11:29:35.888640',
+  'email' : 'aws4.borisWgmail.com',
+  'mobile' : '91234567',
+  'address' : 'FLAT 123, BLK D, HAHA GARDEN, HK',
+  'SEN' : true,
+  'sen_detail' : 'ASD, ADHD',
+  'prog_code': 'UWL-BS-BBA',
+  'prog_name' : 'BA (Hons) Business Studies',
+  'prog_provider' : 'University of West London',
+  'mode_of_study' : 'part-time',
+  'entry_year' : '2024',
+  'intake_terms' : 'JAN',
+  'photo_path' : '',
+  'id_doc_path' : '',
+  'education_qualification1' : '',
+  'education_qualification2' : '',
+  'education_qualification3' : '',
+  'professional_qualification1' : '',
+  'professional_qualification2' : '',
+  'professional_qualification3' : '',
+  'student_no' : '',
+  'status' : 'REJECTED',
+  'last_update_time' : '20240101-174234',
+  'create_date' : '20240101-174234'
+}
+
+
+INSERT INTO "cand_application" VALUE 
+{      
+  'pk' : '2fb624f4-0b88-4c2b-91a7-521d9a7f7894',
+  'sk' : 'UWL-CS-CYB-SEC-20240203174234',
+  'surname' : 'LAM',
+  'given_name' : 'LE BORIS',
+  'id_doc_no' : 'L123',
+  'gender' : 'Male',
+  'dob' : '2007-03-06T11:29:35.888640',
+  'email' : 'aws4.borisWgmail.com',
+  'mobile' : '91234567',
+  'address' : 'FLAT 123, BLK D, HAHA GARDEN, HK',
+  'SEN' : true,
+  'sen_detail' : 'ASD, ADHD',
+  'prog_code': 'UWL-CS-CYB-SEC',
+  'prog_name' : 'BSc (Hons) Cyber Security',
+  'prog_provider' : 'University of West London',
+  'mode_of_study' : 'part-time',
+  'entry_year' : '2024',
+  'intake_terms' : 'JAN',
+  'photo_path' : '',
+  'id_doc_path' : '',
+  'education_qualification1' : '',
+  'education_qualification2' : '',
+  'education_qualification3' : '',
+  'professional_qualification1' : '',
+  'professional_qualification2' : '',
+  'professional_qualification3' : '',
+  'student_no' : '',
+  'status' : 'PENDING',
+  'last_update_time' : '20240203-174234',
+  'create_date' : '20240203-174234'
+}
+
+
+
+INSERT INTO "cand_application" VALUE 
+{
+  'pk' : 'e9bda886-2418-4bf8-b500-0bec52747858',
+  'sk' : 'CAND',
+  'surname' : 'CHAN',
+  'given_name' : 'LE BE',
+  'email' : 'aws3.borisWgmail.com',
+  'mobile_contact' : '+852 91234567',
+  'wallet_address' : ''
+}
+
+INSERT INTO "cand_application" VALUE 
+{
+  'pk' : 'e9bda886-2418-4bf8-b500-0bec52747858',
+  'sk' : 'UWL-CS-CYB-SEC-20240303174234',
+  'surname' : 'CHAN',
+  'given_name' : 'LE BE',
+  'id_doc_no' : 'K123',
+  'gender' : 'Male',
+  'dob' : ' 2007-03-06T11:29:35.888640',
+  'email' : 'aws3.borisWgmail.com',
+  'mobile' : '+852 91234567',
+  'address' : 'RM 123, BLK D, HAHA GARDEN, HK',
+  'SEN' : true,
+  'sen_detail' : 'ASD, ADHD',
+  'prog_code': 'UWL-CS-CYB-SEC',
+  'prog_name' : 'BSc (Hons) Cyber Security',
+  'prog_provider' : 'University of West London',
+  'mode_of_study' : 'part-time',
+  'entry_year' : '2024',
+  'intake_terms' : 'JAN',
+  'photo_path' : '',
+  'id_doc_path' : '',
+  'education_qualification1' : '',
+  'education_qualification2' : '',
+  'education_qualification3' : '',
+  'professional_qualification1' : '',
+  'professional_qualification2' : '',
+  'professional_qualification3' : '',
+  'student_no' : '',
+  'status' : 'PENDING',
+  'last_update_time' : '20240303-174234',
+  'create_date' : '20240303-174234'
+}

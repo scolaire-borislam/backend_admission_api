@@ -1,0 +1,64 @@
+{
+    "TableName": "application",
+    "KeySchema": [
+        { "AttributeName": "app_id", "KeyType": "HASH" },
+        { "AttributeName": "create_date", "KeyType": "RANGE" }
+    ],
+    "AttributeDefinitions": [
+        {
+            "AttributeName": "app_id",
+            "AttributeType": "S"
+          },
+          {
+            "AttributeName": "create_date",
+            "AttributeType": "S"
+          },
+          {
+            "AttributeName": "prog_name",
+            "AttributeType": "S"
+          },
+          {
+            "AttributeName": "email",
+            "AttributeType": "S"
+          }
+
+    ],
+    "GlobalSecondaryIndexes": [
+        {
+          "IndexName": "GSI_EMAIL_APP_ID",
+          "KeySchema": [
+           {
+              "AttributeName": "email",
+              "KeyType": "HASH"
+           },
+           {
+              "AttributeName": "app_id",
+              "KeyType": "RANGE"
+           }
+          ]
+          ,
+          "Projection": {
+            "ProjectionType": "ALL"
+          }
+        },
+        {
+          "IndexName": "GSI_PROG_NAME_APP_ID", 
+          "KeySchema": [
+              {
+              "AttributeName": "prog_name",
+              "KeyType": "HASH"
+              },
+              {
+              "AttributeName": "app_id",
+              "KeyType": "RANGE"
+              }
+          ]
+          ,
+          "Projection": {
+            "ProjectionType": "ALL"
+          }
+        }
+      ],    
+    "BillingMode": "PAY_PER_REQUEST"
+ 
+  }

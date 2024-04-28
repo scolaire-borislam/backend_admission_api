@@ -1,0 +1,119 @@
+{
+  "ModelName": "programme",
+  "ModelMetadata": {
+    "Author": "",
+    "DateCreated": "Jan 30, 2024, 05:34 PM",
+    "DateLastModified": "Feb 01, 2024, 01:59 PM",
+    "Description": "",
+    "AWSService": "Amazon DynamoDB",
+    "Version": "3.0"
+  },
+  "DataModel": [
+    {
+      "TableName": "programme",
+      "KeyAttributes": {
+        "PartitionKey": {
+          "AttributeName": "prog_code",
+          "AttributeType": "S"
+        },
+        "SortKey": {
+          "AttributeName": "prog_provider",
+          "AttributeType": "S"
+        }
+      },
+      "NonKeyAttributes": [
+        {
+          "AttributeName": "faculty",
+          "AttributeType": "S"
+        },
+        {
+          "AttributeName": "area",
+          "AttributeType": "S"
+        },
+        {
+          "AttributeName": "duration",
+          "AttributeType": "S"
+        },
+        {
+          "AttributeName": "entry_req_eng",
+          "AttributeType": "S"
+        },
+        {
+          "AttributeName": "entry_req_general",
+          "AttributeType": "S"
+        },
+        {
+          "AttributeName": "entry_req_other",
+          "AttributeType": "S"
+        },
+        {
+          "AttributeName": "mode_of_study",
+          "AttributeType": "S"
+        },
+        {
+          "AttributeName": "prog_desc",
+          "AttributeType": "S"
+        },
+        {
+          "AttributeName": "prog_name",
+          "AttributeType": "S"
+        },
+        {
+          "AttributeName": "img1",
+          "AttributeType": "S"
+        },
+        {
+          "AttributeName": "img2",
+          "AttributeType": "S"
+        },
+        {
+          "AttributeName": "y1_tuition_fee",
+          "AttributeType": "S"
+        },
+        {
+          "AttributeName": "y2_tuition_fee",
+          "AttributeType": "S"
+        },
+        {
+          "AttributeName": "y3_tuition_fee",
+          "AttributeType": "S"
+        },
+        {
+          "AttributeName": "featured",
+          "AttributeType": "S"
+        }
+      ],
+      "DataAccess": {
+        "MySql": {}
+      },
+      "SampleDataFormats": {},
+      "BillingMode": "PROVISIONED",
+      "ProvisionedCapacitySettings": {
+        "ProvisionedThroughput": {
+          "ReadCapacityUnits": 5,
+          "WriteCapacityUnits": 5
+        },
+        "AutoScalingRead": {
+          "ScalableTargetRequest": {
+            "MinCapacity": 1,
+            "MaxCapacity": 10,
+            "ServiceRole": "AWSServiceRoleForApplicationAutoScaling_DynamoDBTable"
+          },
+          "ScalingPolicyConfiguration": {
+            "TargetValue": 70
+          }
+        },
+        "AutoScalingWrite": {
+          "ScalableTargetRequest": {
+            "MinCapacity": 1,
+            "MaxCapacity": 10,
+            "ServiceRole": "AWSServiceRoleForApplicationAutoScaling_DynamoDBTable"
+          },
+          "ScalingPolicyConfiguration": {
+            "TargetValue": 70
+          }
+        }
+      }
+    }
+  ]
+}

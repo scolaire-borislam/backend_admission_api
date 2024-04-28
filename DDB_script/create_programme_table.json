@@ -1,0 +1,84 @@
+{
+    "TableName": "programme",
+    "KeySchema": [
+        { "AttributeName": "prog_code", "KeyType": "HASH" },
+        { "AttributeName": "prog_provider", "KeyType": "RANGE" }
+    ],
+    "AttributeDefinitions": [
+        {
+            "AttributeName": "prog_code",
+            "AttributeType": "S"
+          },
+          {
+            "AttributeName": "prog_provider",
+            "AttributeType": "S"
+          },
+      {
+        "AttributeName": "faculty",
+        "AttributeType": "S"
+      },
+      {
+        "AttributeName": "prog_name",
+        "AttributeType": "S"
+      },
+      {
+        "AttributeName": "featured",
+        "AttributeType": "S"
+      }
+    ],
+    "GlobalSecondaryIndexes": [
+      {
+        "IndexName": "GSI_PROVIDER_PNAME",
+        "KeySchema": [
+         {
+            "AttributeName": "prog_provider",
+            "KeyType": "HASH"
+         },
+         {
+            "AttributeName": "prog_name",
+            "KeyType": "RANGE"
+         }
+        ]
+        ,
+        "Projection": {
+          "ProjectionType": "ALL"
+        }
+      },
+      {
+        "IndexName": "GSI_FEATURED_PCODE", 
+        "KeySchema": [
+            {
+            "AttributeName": "featured",
+            "KeyType": "HASH"
+            },
+            {
+            "AttributeName": "prog_code",
+            "KeyType": "RANGE"
+            }
+        ]
+        ,
+        "Projection": {
+          "ProjectionType": "ALL"
+        }
+      },
+      {
+        "IndexName": "GSI_FACULTY_PCODE", 
+        "KeySchema": [
+            {
+            "AttributeName": "faculty",
+            "KeyType": "HASH"
+            },
+            {
+            "AttributeName": "prog_code",
+            "KeyType": "RANGE"
+            }
+        ]
+        ,
+        "Projection": {
+          "ProjectionType": "ALL"
+        }
+      }
+    ],
+    "BillingMode": "PAY_PER_REQUEST"
+ 
+  }

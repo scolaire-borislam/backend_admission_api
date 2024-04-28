@@ -1,0 +1,387 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  admission_api
+
+  Sample SAM Template for admission_api
+
+# More info about Globals: https://github.com/awslabs/serverless-application-model/blob/master/docs/globals.rst
+Globals:
+  Function:
+    Timeout: 150
+    Tracing: Active
+  Api:
+    TracingEnabled: true
+    Cors:
+      AllowMethods: "'GET,POST,OPTIONS'"
+      AllowHeaders: "'content-type'"
+      AllowOrigin: "'*'"
+      MaxAge: "'0'"
+
+Resources:
+  ListProgrammesFunction:
+    Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
+    Properties:
+      CodeUri: src/list_programmes/
+      # CodeUri: hello_world/
+      Handler: app.lambda_handler
+      Layers:
+        - !Ref MyLayers      
+      Runtime: python3.11
+      Role: arn:aws:iam::885596329441:role/APP_LAMBDA_ROLE  
+      Architectures:
+        - x86_64
+      Events:
+
+        ListProgrammes:
+          Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
+          Properties:
+
+            Path: /list
+            Method: get
+
+  ListApplicationsFunction:
+    Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
+    Properties:
+      CodeUri: src/list_applications/
+      Handler: app.lambda_handler
+      Layers:
+        - !Ref MyLayers      
+      Runtime: python3.11
+      Role: arn:aws:iam::885596329441:role/APP_LAMBDA_ROLE  
+      Architectures:
+        - x86_64
+      Events:
+        ListPApplications:
+          Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
+          Properties:
+            Path: /listapp
+            Method: get         
+
+  GetApplicationFunction:
+    Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
+    Properties:
+      CodeUri: src/get_application/
+      Handler: app.lambda_handler
+      Layers:
+        - !Ref MyLayers      
+      Runtime: python3.11
+      Role: arn:aws:iam::885596329441:role/APP_LAMBDA_ROLE  
+      Architectures:
+        - x86_64
+      Events:
+        GetApplication:
+          Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
+          Properties:
+            Path: /get_application
+            Method: get   
+
+  GetDocUrlFunction:
+
+    Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
+    Properties:
+      CodeUri: src/get_doc_url
+      Handler: app.lambda_handler
+      Layers:
+        - !Ref MyLayers      
+      Runtime: python3.11
+      Role: arn:aws:iam::885596329441:role/APP_LAMBDA_ROLE  
+      Architectures:
+        - x86_64
+      Events:
+        GetDocUrl:
+          Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
+          Properties:
+            Path: /GetDocUrl
+            Method: post   
+
+  GetTokenImageFunction:
+
+    Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
+    Properties:
+      CodeUri: src/get_token_image
+      Handler: app.lambda_handler
+      Layers:
+        - !Ref MyLayers      
+      Runtime: python3.11
+      Role: arn:aws:iam::885596329441:role/APP_LAMBDA_ROLE  
+      Architectures:
+        - x86_64
+      Events:        
+        GetDocUrl:
+          Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
+          Properties:
+            Path: /GetTokenImage/{id}
+            Method: get   
+            
+
+  UpdateApplicationFunction:
+
+    Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
+    Properties:
+      CodeUri: src/update_application
+      Handler: app.lambda_handler
+      Layers:
+        - !Ref MyLayers      
+      Runtime: python3.11
+      Role: arn:aws:iam::885596329441:role/APP_LAMBDA_ROLE  
+      Architectures:
+        - x86_64
+      Events:        
+        GetDocUrl:
+          Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
+          Properties:
+            Path: /update_application
+            Method: post
+
+  GetProgrammeFunction:
+
+    Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
+    Properties:
+      CodeUri: src/get_programme
+      Handler: app.lambda_handler
+      Layers:
+        - !Ref MyLayers      
+      Runtime: python3.11
+      Role: arn:aws:iam::885596329441:role/APP_LAMBDA_ROLE  
+      Architectures:
+        - x86_64
+      Events:        
+        GetProgramme:
+          Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
+          Properties:
+            Path: /get_programme
+            Method: get
+
+  IssueCardFunction:
+    Type: AWS::Serverless::Function 
+    Properties:
+      CodeUri: src/issue_card
+      Handler: app.lambda_handler
+      Layers:
+        - !Ref MyLayers      
+      Runtime: python3.11
+      Role: arn:aws:iam::885596329441:role/APP_SQS_LAMBDA_ROLE  
+      Architectures:
+        - x86_64
+      Events:        
+        IssueCardFunction:
+          Type: Api 
+          Properties:
+            Path: /issue_card
+            Method: post
+
+  CheckReqFunction:
+    Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
+    Properties:
+      CodeUri: src/check_req
+      Handler: app.lambda_handler
+      Layers:
+        - !Ref MyLayers      
+      Runtime: python3.11
+      Role: arn:aws:iam::885596329441:role/APP_LAMBDA_ROLE  
+      Architectures:
+        - x86_64
+      Events:        
+        IssueCardFunction:
+          Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
+          Properties:
+            Path: /check_req_ai
+            Method: post
+
+  StartReqContractFunction:
+    Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
+    Properties:
+      CodeUri: src/start_req_contract
+      Handler: app.lambda_handler
+      Layers:
+        - !Ref MyLayers      
+      Runtime: python3.11
+      Role: arn:aws:iam::885596329441:role/APP_LAMBDA_ROLE  
+      Architectures:
+        - x86_64
+      Events:        
+        IssueCardFunction:
+          Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
+          Properties:
+            Path: /start_req_contract
+            Method: post
+
+  SearchApplicationsFunction:
+    Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
+    Properties:
+      CodeUri: src/search_application/
+      Handler: app.lambda_handler
+      Layers:
+        - !Ref MyLayers      
+      Runtime: python3.11
+      Role: arn:aws:iam::885596329441:role/APP_LAMBDA_ROLE  
+      Architectures:
+        - x86_64
+      Events:
+        ListPApplications:
+          Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
+          Properties:
+            Path: /searchapp
+            Method: get
+
+  LoginFunction:
+    Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
+    Properties:
+      CodeUri: src/login
+      Handler: app.lambda_handler
+      Layers:
+        - !Ref MyLayers      
+      Runtime: python3.11
+      Role: arn:aws:iam::885596329441:role/APP_LAMBDA_ROLE  
+      Architectures:
+        - x86_64
+      Events:        
+        IssueCardFunction:
+          Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
+          Properties:
+            Path: /login
+            Method: post
+
+  GetParameterFunction:
+    Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
+    Properties:
+      CodeUri: src/get_parameter
+      Handler: app.lambda_handler
+      Layers:
+        - !Ref MyLayers      
+      Runtime: python3.11
+      Role: arn:aws:iam::885596329441:role/APP_LAMBDA_ROLE  
+      Architectures:
+        - x86_64
+      Events:        
+        IssueCardFunction:
+          Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
+          Properties:
+            Path: /get_parameter
+            Method: get
+
+  GetCandMasterInfoFunction:
+    Type: AWS::Serverless::Function 
+    Properties:
+      CodeUri: src/get_cand_master_info
+      Handler: app.lambda_handler
+      Layers:
+        - !Ref MyLayers      
+      Runtime: python3.11
+      Role: arn:aws:iam::885596329441:role/APP_SQS_LAMBDA_ROLE  
+      Architectures:
+        - x86_64
+      Events:        
+        GetCandMasterInfoFunction:
+          Type: Api 
+          Properties:
+            Path: /get_cand_master_info
+            Method: get
+
+  UpdateContractStatus:
+    Type: AWS::Serverless::Function 
+    Properties:
+      CodeUri: src/update_contract_status
+      Handler: app.lambda_handler
+      Layers:
+        - !Ref MyLayers      
+      Runtime: python3.11
+      Role: arn:aws:iam::885596329441:role/APP_SQS_LAMBDA_ROLE  
+      Architectures:
+        - x86_64
+      Events:        
+        IssueCardFunction:
+          Type: Api 
+          Properties:
+            Path: /update_contract_status
+            Method: post
+
+
+  SqsStartContract:
+    Type: AWS::Serverless::Function 
+    Properties:
+      CodeUri: src/sqs_start_contract
+      Handler: app.lambda_handler
+      Layers:
+        - !Ref MyLayers      
+      Runtime: python3.11
+      Role: arn:aws:iam::885596329441:role/APP_SQS_LAMBDA_ROLE  
+      Architectures:
+        - x86_64
+      Events:
+        MySQSEvent:
+          Type: SQS
+          Properties:
+            Queue: !GetAtt SqsContractQueue.Arn
+            BatchSize: 1
+
+  SqsContractQueue:
+    Type: AWS::SQS::Queue
+    Properties:
+      QueueName: scolaire-contract-queue
+      VisibilityTimeout: 150
+
+  MyLayers:
+    Type: AWS::Serverless::LayerVersion
+    Properties:
+      ContentUri: layer/
+      CompatibleRuntimes:
+        - python3.11
+
+Outputs:
+
+  ListProgrammesApi:
+    Description: API Gateway endpoint URL for Prod stage for Hello World function
+    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/list/"
+  ListProgrammesFunction:
+    Description: List all available programmes Function ARN
+    Value: !GetAtt ListProgrammesFunction.Arn
+  ListApplicationsFunction:
+    Description: List all admission applcation Function ARN
+    Value: !GetAtt ListProgrammesFunction.Arn    
+  GetDocUrlFunction:
+    Description: Get DOC URL Lambda Function ARN
+    Value: !GetAtt GetDocUrlFunction.Arn      
+  GetTokenImageFunction:
+    Description: Get Token Image Function ARN
+    Value: !GetAtt GetTokenImageFunction.Arn      
+  UpdateApplicationFunction:
+    Description: Update DynamoDB Application Table ARN
+    Value: !GetAtt UpdateApplicationFunction.Arn     
+  GetApplicationFunction:
+    Description: Get Cand Application ARN
+    Value: !GetAtt GetApplicationFunction.Arn  
+  GetProgrammeFunction:   
+    Description: Get programme ARN
+    Value: !GetAtt GetProgrammeFunction.Arn   
+  IssueCardFunction:
+    Description: Issue Student Card NFT ARN
+    Value: !GetAtt IssueCardFunction.Arn
+  CheckReqFunction:
+    Description: Check admission requirement ARN
+    Value: !GetAtt CheckReqFunction.Arn        
+  StartReqContractFunction:
+    Description: Check Requirement Check Smart Contract ARN
+    Value: !GetAtt StartReqContractFunction.Arn   
+  SearchApplicationsFunction:  
+    Description: Search Cand Application ARN
+    Value: !GetAtt SearchApplicationsFunction.Arn     
+  LoginFunction:
+    Description: Login Backend System ARN
+    Value: !GetAtt LoginFunction.Arn     
+  UpdateContractStatus:
+    Description: Update Contract Status ARN
+    Value: !GetAtt UpdateContractStatus.Arn     
+  SqsStartContract:
+    Description: Sqs start Contract function ARN
+    Value: !GetAtt SqsStartContract.Arn   
+  GetCandMasterInfoFunction:
+    Description: Get Cand Master Info ARN
+    Value: !GetAtt GetCandMasterInfoFunction.Arn 
+  GetParameterFunction:          
+    Description: Get Parameter ARN
+    Value: !GetAtt GetParameterFunction.Arn   
+  # ListProgrammesIamRole:
+  #   Description: Implicit IAM Role created for Hello World function
+  #   Value: !GetAtt ListProgrammesIamRole.Arn

@@ -1,0 +1,7 @@
+requests 
+pybase64
+logging
+boto3
+datetime
+web3
+wheel

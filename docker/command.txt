@@ -1,0 +1,59 @@
+python -m venv .venv
+source .venv/bin/activate
+pip install wheel in virtual environment
+
+
+python -m pip install -r requirements.txt
+
+#docker run -p 8000:8000 -d --rm --network lambda-local --name dynamodb -v /.docker/dynamodb:/data/ amazon/dynamodb-local -jar /dynamodb_local_latest/DynamoDBLocal_lib/DynamoDBLocal.jar -sharedDb -dbPath /data
+#docker run -p 8000:8000 -d --rm --network lambda-local --name dynamodb -v {your-user-root-folder}/.docker/dynamodb:/data/ amazon/dynamodb-local -jar DynamoDBLocal.jar -sharedDb -dbPath /data
+
+docker run -p 8000:8000 -d --rm --network lambda-local --name dynamodb -v c:/docker/dynamodb:/data/ amazon/dynamodb-local -jar DynamoDBLocal.jar -sharedDb -dbPath /data
+sam init -r python3.11 -d pip -n admission_api
+sam build
+sam local start-api --profile local --docker-network lambda-local --host 0.0.0.0 --container-host 10.2.60.64 --parameter-overrides "ParameterKey=AWSENV,ParameterValue=AWS_SAM_LOCAL"
+sam local start-api  --docker-network lambda-local  --parameter-overrides "ParameterKey=AWSENV,ParameterValue=AWS_SAM_LOCAL"
+
+
+sam local start-api --docker-network lambda-local --parameter-overrides AWSENV=AWS_SAM_LOCAL
+
+#sam local start-api --profile local --docker-network lambda-local --host 0.0.0.0 --container-host 10.2.60.64 --parameter-overrides "ParameterKey=AWSENV,ParameterValue=AWS_SAM_LOCAL"
+#sam local start-api --profile local --docker-network lambda-local --parameter-overrides "ParameterKey=AWSENV,ParameterValue=AWS_SAM_LOCAL"
+#sam local start-api --docker-network lambda-local --parameter-overrides AWSENV=AWS_SAM_LOCAL
+
+
+ngrok config add-authtoken xxxxxxxxxxx
+ngrok http http://localhost:3000
+
+
+
+aws dynamodb query  --table-name cand_application  --index-name GSI_EMAIL_ID --key-condition-expression "email=:v1" --filter-expression "sk <> :sk" --expression-attribute-values file://expression.json
+
+
+######################################
+Hint to allow CORS in API Gatewat
+######################################
+1. need to add fllowing code in response header:
+            'headers': {
+                'Access-Control-Allow-Headers': '*',                
+                'Access-Control-Allow-Methods': 'OPTIONS,POST,GET',
+                'Access-Control-Allow-Origin': '*',
+                "Access-Control-Max-Age": "0"
+            }, 
+
+2. Lambda create Function URL 
+    - allow header *
+    - alow orgin *
+    - allow method *
+    - max age = 0
+This will make lambda functio URL work with CORS
+3. API gateway resource
+   - POST method - integration  request 
+   - disable lambda proxy integration - ENABLE CORS
+4. Deploy API
+5. API gateway resource
+   - POST method - integration  request 
+   - Enable lambda proxy integration again
+6. Deploy API again
+7. Delete Lambda Function URL
+8. output string for smart contract should be as short as possible 
